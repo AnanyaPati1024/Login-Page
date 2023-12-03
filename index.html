@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>BIG STORM</h1>
+            <h2>Educational Website</h2>
+            <h3>Sign In and Shine More</h3>
+            <form id="signInForm">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+                </div>
+                <button type="button" onclick="signin()">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="demo"></div>
+
+    <script>
+        function signin() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var isValid = passwordValidate(password);
+
+            if (isValid) {
+                document.getElementById("demo").innerHTML = "Sign In successful!!! Welcome " + name + " Learn More with BigStorm";
+            } else {
+                document.getElementById("demo").innerHTML = "Please enter a valid password (password should be of minimum 8 characters having at least 1 small letter(a-z), 1 capital letter(A-Z), 1 digit(0-9), 1 special character)";
+            }
+        }
+
+        function passwordValidate(password) {
+            var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return regex.test(password);
+        }
+    </script>
+
+</body>
+
+</html>
